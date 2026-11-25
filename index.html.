@@ -1,0 +1,526 @@
+:root {
+  --paper: #f7f3eb;
+  --paper-deep: #eee7da;
+  --ink: #51463a;
+  --muted: #887b6b;
+  --gold: #ad8b54;
+  --gold-light: #d8c39b;
+  --white: #fffdfa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 300;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* КОНВЕРТ */
+
+.envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--paper);
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.envelope-screen.is-opening {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.envelope-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(247,243,235,.08),
+    rgba(247,243,235,.2) 45%,
+    rgba(247,243,235,.72)
+  );
+}
+
+.envelope-message {
+  position: relative;
+  z-index: 1;
+  width: min(88%, 470px);
+  margin-top: 45vh;
+  padding: 24px 18px 30px;
+  text-align: center;
+  color: #5b4d3b;
+  animation: riseIn 1.3s both;
+}
+
+.eyebrow {
+  margin: 0 0 15px;
+  color: var(--gold);
+  font-size: .65rem;
+  letter-spacing: .25em;
+  font-weight: 500;
+}
+
+.envelope-message h1 {
+  margin: 0 0 5px;
+  font: 500 clamp(1.6rem, 6vw, 2.35rem)/1.1
+    'Cormorant Garamond', Georgia, serif;
+}
+
+.envelope-names {
+  margin: 0 0 22px;
+  font: 500 2rem 'Cormorant Garamond', Georgia, serif;
+}
+
+.envelope-names span,
+.couple-names span,
+.footer h2 span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.open-button {
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  padding: 14px 23px;
+  color: var(--ink);
+  background: rgba(255,253,250,.88);
+  font: 500 .72rem 'Montserrat', sans-serif;
+  letter-spacing: .08em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(82,65,39,.1);
+  transition: background .25s, transform .25s;
+}
+
+.open-button:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.button-flower {
+  color: var(--gold);
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.tap-hint {
+  margin: 12px 0 0;
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: #766a5b;
+}
+
+
+/* НЕГИЗГИ САЙТ */
+
+.hidden {
+  display: none;
+}
+
+.invitation {
+  overflow: hidden;
+  animation: pageIn 1.1s ease both;
+}
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 70px 22px;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(247,243,235,.48),
+      rgba(247,243,235,.76)
+    ),
+    url('assets/floral-frame.jpeg') center/cover no-repeat;
+}
+
+.hero-inner {
+  width: min(100%, 560px);
+  padding: 55px 20px;
+}
+
+.couple-names {
+  margin: 8px 0 14px;
+  font: 500 clamp(3.3rem, 12vw, 6rem)/.95
+    'Cormorant Garamond', Georgia, serif;
+  color: #514536;
+}
+
+.couple-names span {
+  padding: 0 5px;
+}
+
+.gold-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--gold);
+  margin: 22px auto;
+}
+
+.gold-line::before,
+.gold-line::after {
+  content: '';
+  width: 62px;
+  height: 1px;
+  background: var(--gold-light);
+}
+
+.hero-date {
+  margin: 0;
+  color: var(--gold);
+  font-size: .8rem;
+  letter-spacing: .3em;
+  font-weight: 500;
+}
+
+.hero-note {
+  margin: 25px 0 0;
+  font: 400 1.25rem/1.5
+    'Cormorant Garamond', Georgia, serif;
+  color: #6e6254;
+}
+
+.scroll-link {
+  display: inline-grid;
+  place-items: center;
+  margin-top: 35px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--gold-light);
+  border-radius: 50%;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+
+/* ТЕКСТТЕР */
+
+.section {
+  padding: 82px 22px;
+  text-align: center;
+}
+
+.section h2 {
+  max-width: 720px;
+  margin: 0 auto 18px;
+  font: 500 clamp(2.2rem, 7vw, 3.6rem)/1.05
+    'Cormorant Garamond', Georgia, serif;
+  color: #594b3d;
+}
+
+.body-copy {
+  max-width: 590px;
+  margin: 14px auto;
+  color: var(--muted);
+  font-size: .83rem;
+  line-height: 1.9;
+}
+
+.invitation-quote {
+  margin-top: 24px;
+  color: #9b7a4c;
+  font: italic 500 1.3rem/1.5
+    'Cormorant Garamond', Georgia, serif;
+}
+
+.small-ornament {
+  margin-top: 27px;
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+
+/* СҮРӨТТӨР */
+
+.photo-feature {
+  position: relative;
+  width: min(100% - 32px, 720px);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.photo-feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.photo-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 42px 15px 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(
+    transparent,
+    rgba(44,36,27,.42)
+  );
+  font: italic 1.35rem
+    'Cormorant Garamond', Georgia, serif;
+}
+
+.photo-wide {
+  width: 100%;
+  max-height: 620px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.photo-wide img {
+  display: block;
+  width: 100%;
+  max-height: 620px;
+  object-fit: cover;
+  object-position: center 43%;
+}
+
+.rings-feature {
+  max-width: 540px;
+}
+
+
+/* ТОЙДУН МААЛЫМАТТАРЫ */
+
+.details {
+  background: #f0eadd;
+  margin-top: 70px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: min(100%, 720px);
+  margin: 35px auto 0;
+}
+
+.detail-card {
+  padding: 28px 13px;
+  border: 1px solid #ddceb2;
+  background: rgba(255,253,250,.55);
+}
+
+.detail-card-wide {
+  grid-column: 1 / -1;
+}
+
+.detail-icon {
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+.detail-label {
+  margin: 12px 0 8px;
+  color: var(--gold);
+  font-size: .59rem;
+  letter-spacing: .2em;
+  font-weight: 600;
+}
+
+.detail-card h3 {
+  margin: 0;
+  font: 500 clamp(1.25rem, 4vw, 1.8rem)
+    'Cormorant Garamond', Georgia, serif;
+}
+
+.detail-card p:not(.detail-label) {
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #947344;
+  font-size: .72rem;
+  text-decoration: none;
+  border-bottom: 1px solid #c9b28a;
+  padding-bottom: 3px;
+}
+
+
+/* ТОЙ ЭЭЛЕРИ */
+
+.hosts {
+  background: var(--paper);
+}
+
+
+/* АКЫРКЫ БӨЛҮК */
+
+.footer {
+  padding-bottom: 100px;
+  background: #f0eadd;
+}
+
+.footer h2 {
+  margin-bottom: 12px;
+}
+
+.footer p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.footer-flower {
+  margin-top: 25px;
+  color: var(--gold);
+  font-size: 1.8rem;
+}
+
+
+/* МУЗЫКА */
+
+.music-button {
+  position: fixed;
+  z-index: 30;
+  right: 17px;
+  bottom: 17px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid rgba(173,139,84,.65);
+  border-radius: 30px;
+  padding: 10px 15px;
+
+  background: rgba(255,253,250,.94);
+  color: #6c5840;
+
+  font: 500 .65rem 'Montserrat', sans-serif;
+
+  box-shadow: 0 4px 18px rgba(63,48,30,.12);
+  cursor: pointer;
+}
+
+.music-icon {
+  font-size: 1.1rem;
+}
+
+.music-button.playing .music-icon {
+  animation: musicPulse 1.2s ease-in-out infinite;
+}
+
+
+/* АНИМАЦИЯЛАР */
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+
+/* КОМПЬЮТЕР ҮЧҮН */
+
+@media (min-width: 760px) {
+
+  .envelope-message {
+    margin-top: 38vh;
+  }
+
+  .section {
+    padding: 110px 30px;
+  }
+
+  .photo-wide {
+    width: min(100% - 80px, 1000px);
+  }
+
+  .photo-wide img {
+    max-height: 760px;
+  }
+
+}
+
+
+/* КИЧИНЕ ТЕЛЕФОНДОР ҮЧҮН */
+
+@media (max-width: 380px) {
+
+  .envelope-message {
+    margin-top: 40vh;
+  }
+
+  .detail-grid {
+    gap: 8px;
+  }
+
+  .detail-card {
+    padding: 23px 8px;
+  }
+
+}
+
+
+/* АНИМАЦИЯНЫ АЗАЙТУУ ЖӨНДӨМҮ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+}
